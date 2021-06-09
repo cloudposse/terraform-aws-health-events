@@ -4,15 +4,18 @@ import (
 	"math/rand"
 	"strconv"
 	"testing"
-	"time"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/stretchr/testify/assert"
 )
 
 // Test the Terraform module in examples/complete using Terratest.
 func TestExamplesComplete(t *testing.T) {
 	t.Parallel()
+
+  // We always include a random attribute so that parallel tests and AWS resources do not interfere with each
+	// other
+	randID := strconv.Itoa(rand.Intn(100000))
+	attributes := []string{randID}
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -24,7 +27,6 @@ func TestExamplesComplete(t *testing.T) {
 		// and AWS resources do not interfere with each other
 		Vars: map[string]interface{}{
 			"attributes": attributes,
-			"example":    exampleInput,
 		},
 	}
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created

@@ -72,6 +72,17 @@ usage: |-
 
   Here's how to invoke this module in your projects:
   ```hcl
+  module "monitor_yaml_config" {
+    source  = "cloudposse/config/yaml"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version     = "x.x.x"
+
+    map_config_local_base_path = path.module
+    map_config_paths           = ["catalog/event_rules/*.yaml"]
+
+    context = module.this.context
+  }
+
   module "example" {
     source = "cloudposse/health-events/aws"
     # Cloud Posse recommends pinning every module to a specific version
