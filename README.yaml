@@ -83,10 +83,22 @@ usage: |-
     context = module.this.context
   }
 
-  module "example" {
+  module "health_events" {
     source = "cloudposse/health-events/aws"
     # Cloud Posse recommends pinning every module to a specific version
     # version     = "x.x.x"
+
+    event_rules = module.event_rules_yaml_config.list_configs
+    subscribers = {
+      opsgenie = {
+        protocol               = "https"
+        endpoint               = "https://api.example.com/v1/"
+        endpoint_auto_confirms = true
+        raw_message_delivery   = false
+      }
+    }
+
+    context = module.this.context
   }
   ```
 
