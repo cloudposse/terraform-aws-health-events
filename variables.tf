@@ -1,9 +1,9 @@
 variable "event_rules" {
   type = list(object({
-    name                = string
-    description         = string
+    name        = string
+    description = string
     event_rule_pattern = object({
-      detail              = object({
+      detail = object({
         service             = string
         event_type_category = string
         event_type_codes    = list(string)

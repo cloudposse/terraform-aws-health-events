@@ -1,7 +1,7 @@
 locals {
   enabled        = module.this.enabled
   create_kms_key = local.enabled && var.kms_master_key_id == null
-  event_rules    = {for event_rule in var.event_rules : event_rule.name => event_rule}
+  event_rules    = { for event_rule in var.event_rules : event_rule.name => event_rule }
 }
 
 module "health_events_label" {
@@ -27,14 +27,14 @@ resource "aws_cloudwatch_event_rule" "health_events" {
       "detail-type" : [
         "AWS Health Event"
       ]
-      "detail": {
-        "service": [
+      "detail" : {
+        "service" : [
           each.value.event_rule_pattern.detail.service
         ]
-        "eventTypeCategory": [
+        "eventTypeCategory" : [
           each.value.event_rule_pattern.detail.event_type_category
         ]
-        "eventTypeCode": each.value.event_rule_pattern.detail.event_type_codes
+        "eventTypeCode" : each.value.event_rule_pattern.detail.event_type_codes
       }
     }
   )

@@ -60,7 +60,7 @@ module "sns_topic" {
 }
 
 resource "aws_cloudwatch_event_target" "sns" {
-  for_each   = aws_cloudwatch_event_rule.health_events
-  rule       = each.value.name
-  arn        = module.sns_topic.sns_topic.arn
+  for_each = aws_cloudwatch_event_rule.health_events
+  rule     = each.value.name
+  arn      = module.sns_topic.sns_topic.arn
 }
