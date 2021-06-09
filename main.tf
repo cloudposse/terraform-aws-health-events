@@ -32,9 +32,9 @@ resource "aws_cloudwatch_event_rule" "health_events" {
           each.value.event_rule_pattern.detail.service
         ]
         "eventTypeCategory": [
-          each.value.event_rule_pattern.event_type_category
+          each.value.event_rule_pattern.detail.event_type_category
         ]
-        "eventTypeCode": each.value.event_rule_pattern.event_type_codes
+        "eventTypeCode": each.value.event_rule_pattern.detail.event_type_codes
       }
     }
   )

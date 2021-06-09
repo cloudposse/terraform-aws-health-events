@@ -4,10 +4,10 @@ variable "event_rules" {
     description         = string
     event_rule_pattern = object({
       detail              = object({
-        service = string
+        service             = string
+        event_type_category = string
+        event_type_codes    = list(string)
       })
-      event_type_category = string
-      event_type_codes    = list(string)
     })
   }))
 
