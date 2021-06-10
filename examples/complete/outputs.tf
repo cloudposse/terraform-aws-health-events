@@ -1,14 +1,9 @@
-output "id" {
-  description = "ID of the created example"
-  value       = module.example.id
+output "event_rule_names" {
+  description = "The names of the created EventBridge Rules."
+  value       = module.health_events.event_rule_names
 }
 
-output "example" {
-  description = "Output \"example\" from example module"
-  value       = module.example.example
-}
-
-output "random" {
-  description = "Output \"random\" from example module"
-  value       = module.example.random
+output "event_rule_arns" {
+  description = "The ARNs of the created EventBridge Rules."
+  value       = module.health_events.event_rule_arns
 }
