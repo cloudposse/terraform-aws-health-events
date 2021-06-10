@@ -29,6 +29,7 @@
 -->
 
 This module creates EventBridge (formerly CloudWatch Events) rules for AWS Personal Health Dashboard Events and an SNS topic. EventBridge will publish messages to this SNS topic, which can be subcribed to using this module as well.
+Since AWS Personal Health Dashboard is a global service, but since the KMS key and SNS topic are regional, this module is technically regional but only needs to be deployed once per account.
 
 ---
 
@@ -136,7 +137,7 @@ module "health_events" {
 ## Examples
 
 Here is an example of using this module:
-- [`examples/complete`](https://github.com/cloudposse/terraform-aws-health-events/) - complete example of using this module
+- [`examples/complete`](https://github.com/cloudposse/terraform-aws-health-events/examples/complete) - complete example of using this module
 
 
 
