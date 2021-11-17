@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "sns_kms_key_policy" {
 
 module "sns_topic" {
   source  = "cloudposse/sns-topic/aws"
-  version = "0.16.0"
+  version = "0.20.0"
 
   subscribers       = var.subscribers
   sqs_dlq_enabled   = false
