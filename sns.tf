@@ -1,4 +1,4 @@
-data aws_caller_identity "this" {}
+data "aws_caller_identity" "this" {}
 
 module "sns_kms_key" {
   source  = "cloudposse/kms-key/aws"
