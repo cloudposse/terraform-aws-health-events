@@ -47,9 +47,9 @@ data "aws_iam_policy_document" "sns_kms_key_policy" {
 }
 
 module "sns_topic" {
-  source  = "cloudposse/sns-topic/aws"
-  version = "0.20.1"
+  source = "git@github.com:paintoxic/terraform-aws-sns-topic.git?ref=feature/sns-topic-name"
 
+  sns_topic_name    = local.default_sns_topic_name
   subscribers       = var.subscribers
   sqs_dlq_enabled   = false
   kms_master_key_id = local.create_kms_key ? module.sns_kms_key[0].alias_name : var.kms_master_key_id

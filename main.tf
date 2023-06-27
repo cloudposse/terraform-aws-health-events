@@ -1,7 +1,8 @@
 locals {
-  enabled        = module.this.enabled
-  create_kms_key = local.enabled && var.kms_master_key_id == null
-  event_rules    = { for event_rule in var.event_rules : event_rule.name => event_rule }
+  enabled                = module.this.enabled
+  create_kms_key         = local.enabled && var.kms_master_key_id == null
+  event_rules            = { for event_rule in var.event_rules : event_rule.name => event_rule }
+  default_sns_topic_name = var.sns_topic_name != "" ? var.sns_topic_name : "sns-aws-health-${uuid()}"
 }
 
 module "health_events_label" {
