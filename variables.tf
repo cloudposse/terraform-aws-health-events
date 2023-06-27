@@ -49,3 +49,9 @@ variable "subscribers" {
   description = "Required configuration for subscribers to SNS topic."
   default     = {}
 }
+
+variable "sns_topic_name" {
+  type        = string
+  description = "The name of sns topic"
+  default     = ""
+}
