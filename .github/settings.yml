@@ -5,3 +5,4 @@ repository:
   description: Terraform module to configure AWS EventBridge Rules and SNS Notifications for AWS Personal Health Dashboard
   homepage: https://cloudposse.com/accelerate
   topics: ""
+
