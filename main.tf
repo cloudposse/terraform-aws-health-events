@@ -24,18 +24,7 @@ resource "aws_cloudwatch_event_rule" "health_events" {
       "source" : [
         "aws.health"
       ],
-      "detail-type" : [
-        "AWS Health Event"
-      ]
-      "detail" : {
-        "service" : [
-          each.value.event_rule_pattern.detail.service
-        ]
-        "eventTypeCategory" : [
-          each.value.event_rule_pattern.detail.event_type_category
-        ]
-        "eventTypeCode" : each.value.event_rule_pattern.detail.event_type_codes
-      }
+
     }
   )
 }
